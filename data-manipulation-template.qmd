@@ -1,0 +1,311 @@
+---
+title: "Practice: Data Wrangling"
+format: pdf
+---
+
+## Instructions: starting code
+
+In a Quarto document file, run the following commands:
+
+```{r message=FALSE}
+# packages
+library(tidyverse)
+```
+
+
+```{r}
+students = data.frame(
+  "name" = c("Harry", "Ron", "Hermione", "Luna", "Draco"),
+  "gender" = c("male", "male", "female", "female", "male"),
+  "gpa" = c(3.8, 3.4, 4, 3.5, 3.9),
+  "major" = c("econ", "cogsci", "stats", "psych", "mcb"),
+  "transfer" = c(TRUE, FALSE, FALSE, TRUE, FALSE)
+)
+
+students
+```
+
+
+## Data wrangling functions (reminder):
+
+- `slice()`: subset data based on rows position
+- `filter()`: subset data based on a logical condition
+- `select()`: select columns by name or index
+- `arrange()`: arrange content on one or more variables
+- `count()`: calculate counts
+- `mutate()`: change an existing column, or add a new column
+- `summarize()`: calculate numeric summaries
+- `group_by()`: group data based on one or more columns
+
+
+## 1) Your Turn: Fill in the blanks
+
+Each of the following problems has a code snippet with an incomplete command. 
+Use the code chunks to write your answers, i.e. use the provided command and
+fill in the blanks.
+
+\vspace{5mm}
+
+```r
+# 1) use slice to subset the first row
+slice(_______, ___)
+```
+
+```{r}
+# 1) Answer
+
+```
+
+\vspace{5mm}
+
+```r
+# 2) use slice to subset the first three rows
+# hint: the colon operator ':' is your friend
+slice(_______, ____)
+```
+
+```{r}
+# 2) Answer
+
+```
+
+\vspace{5mm}
+
+```r
+# 3) slice students to get the data of the 1st, 3rd, and 5th rows
+# hint: the combine function c() is your friend
+slice(________, _______)
+```
+
+```{r}
+# 3) Answer
+
+```
+
+\vspace{5mm}
+
+```r
+# 4) select columns name and major
+select(________, ________, _______)
+```
+
+```{r}
+# 4) Answer
+
+```
+
+\vspace{5mm}
+
+```r
+# 5) select columns in 2nd, 3rd and 4th positions
+# hint: the colon operator ':' can be your friend
+select(________, _____)
+```
+
+```{r}
+# 5) Answer
+
+```
+
+\vspace{5mm}
+
+```r
+# 6) create a data frame "women" by filtering female students
+# hint: the == operator is your friend
+women <- filter(________, __________________)
+women
+```
+
+```{r}
+# 6) Answer
+
+```
+
+\vspace{5mm}
+
+```r
+# 7) create a data frame "men" by filtering students that are not female
+# hint: the != operator is your friend
+men <- filter(________, __________________)
+men
+```
+
+```{r}
+# 7) Answer
+
+```
+
+\vspace{5mm}
+
+```r
+# 8) subset students with gpa greater than 3.5
+filter(_______, __________)
+```
+
+```{r}
+# 8) Answer
+
+```
+
+\vspace{5mm}
+
+```r
+# 9) subset male students with gpa greater than or equal to 3.6
+# hint: the & operator is your friend
+filter(_______, ______________________)
+```
+
+```{r}
+# 9) Answer
+
+```
+
+\vspace{5mm}
+
+```r
+# 10) subset students majoring in econ and stats
+# hint: the %in% operator is your friend
+filter(________, __________________________)
+```
+
+```{r}
+# 10) Answer
+
+```
+
+\vspace{5mm}
+
+```r
+# 11) subset female students OR students majoring in cogsci
+# hint: the | operator is your friend
+filter(________, __________________________)
+```
+
+```{r}
+# 11) Answer
+
+```
+
+\vspace{5mm}
+
+```r
+# 12) arrange students by gpa values (in ascending order)
+arrange(________, ____)
+```
+
+```{r}
+# 12)Answer
+
+```
+
+\vspace{5mm}
+
+```r
+# 13) arrange students by gpa values (in descending order)
+arrange(________, _________)
+```
+
+```{r}
+# 13) Answer
+
+```
+
+\vspace{5mm}
+
+```r
+# 14) arrange students by their names (in alphabetical order)
+arrange(________, _____)
+```
+
+```{r}
+# 14) Answer
+
+```
+
+\vspace{5mm}
+
+```r
+# 15) arrange students by gender, and gpa
+arrange(________, _______, _____)
+```
+
+```{r}
+# 15) Answer
+
+```
+
+\vspace{5mm}
+
+```r
+# 16) use mutate() to create a data frame "students2" 
+# by adding a column gpa_sqr, squaring the gpa values
+students2 = mutate(_______, gpa_sqr = _________)
+students2
+```
+
+```{r}
+# 16) Answer
+
+```
+
+\vspace{5mm}
+
+
+## 2) Your Turn: No More Training Wheels
+
+Let's see if you can answer the following problems without us providing an
+incomplete command.
+
+17 - Use summarize to compute the mean gpa (of all students)
+
+```{r}
+# 17) Answer
+
+```
+
+\vspace{5mm}
+
+18 - Compute mean gpa of female students
+
+```{r}
+# 18) Answer
+
+```
+
+\vspace{5mm}
+
+19 - Compute min and max gpa of male students
+
+```{r}
+# 19) Answer
+
+```
+
+\vspace{5mm}
+
+20 - Compute median gpa, grouped by gender
+
+```{r}
+# 20) Answer
+
+```
+
+\vspace{5mm}
+
+21 - Compute mean and median gpa, grouped by transfer status
+
+```{r}
+# 21) Answer
+
+```
+
+\vspace{5mm}
+
+22 - Obtain a table of male students, that are not transfer, arranging its 
+contents by name in alphabetical order (A-Z), selecting columns name, 
+major, and gpa (in that order) 
+
+```{r}
+# 22) Answer
+
+```
