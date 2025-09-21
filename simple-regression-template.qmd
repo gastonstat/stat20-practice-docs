@@ -163,28 +163,41 @@ b) From `reg_data`, identify the 5 smallest residuals. _Hint_: `arrange()` and
 -----
 
 
-# Choose Other Variables
+# Predicting `life_exp` in terms of `murder` and `hs_plus55`
 
-Choose another pair of variables from the `states` data, and repeat the previous 
-steps to explore their relationship.
+Now let's predict life expectancy (`life_exp`) in terms of murder rate (`murder`)
+and an indicator variable derived from high-school graduates, specifically 
+percent of HS graduates greater than or equal to 55 (`hs_plus55`).
+
+This analysis requires mutating the `states` data to add the categorical 
+variable `hs_plus55` that indicates whether a state had a highschool graduation 
+rate larger than or equal to 55 percent. This mutation requires a logical 
+condition `hs_grad >= 55`
 
 ```{r}
-# scatter plot
+# mutate: add variable "hs_plus55"
+states <- states |> 
+  mutate(_____________________)
+```
+
+
+```{r}
+# scatter plot, color coding by hs_plus55
 
 ```
 
 ```{r}
-# correlation
+# correlation between "murder" and "life_exp"
 
 ```
 
 ```{r}
-# linear model
+# linear model predicting "life_exp" in terms of "murder" and "hs_plus55"
 
 ```
 
 ```{r}
-# etc
+# challenge: scatter plot with fitted lines
 
 ```
 
