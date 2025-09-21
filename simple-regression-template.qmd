@@ -1,0 +1,190 @@
+---
+title: "Linear Regression Practice"
+format: pdf
+---
+
+## Instructions: starting code
+
+In a Quarto document file, run the following commands:
+
+```{r message = FALSE}
+# packages
+library(tidyverse)
+```
+
+
+# Data Frame `states`
+
+We are going to use the `state.x77` data set to create a data frame `states`
+with some statistics about U.S. states (from the 1970's)
+
+```{r}
+# data set with some statistics of U.S. states
+states1 = data.frame(name = rownames(state.x77))
+states2 = as.data.frame(state.x77[ ,2:7])
+states = cbind(states1, states2)
+colnames(states) = c("name", "income", "illiteracy", 
+                  "life_exp", "murder", "hs_grad", "frost")
+rownames(states) = 1:nrow(states)
+
+slice(states, 1:10)
+```
+
+\
+
+__Variables in Data__:
+
+- `income`: per capita income (1974)
+
+- `illiteracy`: illiteracy (1970, percent of population)
+
+- `life_exp`: life expectancy in years (1969–71)
+
+- `murder`: murder and non-negligent manslaughter rate per 100,000 population (1976)
+
+- `hs_grad`: percent high-school graduates (1970)
+
+- `frost`: mean number of days with minimum temperature below freezing (1931–1960) in capital or large city
+
+
+# Relationship between `income` and `illiteracy`
+
+We want to study the relationship between percent of `illiteracy` using per-capita `income`
+
+
+## Scatter plot
+
+Make a scatter plot to visualize the relationship between `income` (x-axis) and 
+`illiteracy` (y-axis), displaying the `name` of each state.
+
+```{r}
+# scatter plot
+ggplot(______, aes(x = ______, y = _______)) + 
+  geom_point() +
+  geom_text(aes(label = ______), size = 3, alpha = 0.5)
+```
+
+
+## Correlation Coefficient
+
+Obtain the correlation, `cor()`, between `income` and `illiteracy`
+
+```{r}
+# correlation coefficient
+states |> summarize(correl = _______________)
+```
+
+True or False: based on the states data and the preceding scatter plot ...
+
+a) Having a larger proportion of literate people in a state creates an increment of per-capita income. 
+
+b) States with larger per-capita incomes tend to have lower percentages of illiterate population.
+
+c) High levels of per-capita income produce more educated people.
+
+
+## Linear Regression Model
+
+Use the `lm()` function to fit a linear model between `income` (x) and `illiteracy` (y)
+
+```{r}
+mod1 = lm(____________________, data = ______)
+mod1
+```
+
+Based on the output of your model mod1, provide a verbal interpretation of the obtained coefficients.
+
+__Answer:__ 
+
+
+## Scatter Plot with Regression Line
+
+Re-graph the scatter plot of `income` (x) and `illiteracy` (y), adding the line 
+of the linear model. 
+
+```{r}
+# visualize regression line
+ggplot(______, aes(x = ______, y = _______)) + 
+  geom_point() +
+  geom_text(aes(label = ______), size = 3, alpha = 0.5)
+  geom_abline(slope = ______, intercept = ______)
+```
+
+
+Compare your previous graphic with the one obtained using the following code
+which utilizes the `geom_smooth()` function to superimpose the linear model.
+
+```{r}
+# visualize regression line
+ggplot(______, aes(x = ______, y = _______)) + 
+  geom_point() +
+  geom_text(aes(label = ______), size = 3, alpha = 0.5)
+  geom_smooth(method = "lm", se = FALSE, formula = y ~ x)
+```
+
+
+## Predicted values and Residuals
+
+Inspect the following table which contains x, y, y-hat (predicted), and e-hat (residuals) data
+
+```{r}
+# x, y, fitted values y-hat, residuals e-hat
+reg_data = states |>
+  select(name, income, illiteracy) |>
+  mutate(
+    yhat = fitted(mod1),
+    ehat = residuals(mod1))
+
+# just a few rows
+slice(reg_data, 1:10)
+```
+
+\
+
+a) From `reg_data`, identify the 5 largest residuals. _Hint_: `arrange()` and
+`slice()` are your friends.
+
+```{r}
+# 5 largest residuals
+
+```
+
+\
+
+b) From `reg_data`, identify the 5 smallest residuals. _Hint_: `arrange()` and
+`slice()` are your friends.
+
+```{r}
+# 5 smallest residuals
+
+```
+
+
+-----
+
+
+# Choose Other Variables
+
+Choose another pair of variables from the `states` data, and repeat the previous 
+steps to explore their relationship.
+
+```{r}
+# scatter plot
+
+```
+
+```{r}
+# correlation
+
+```
+
+```{r}
+# linear model
+
+```
+
+```{r}
+# etc
+
+```
+
