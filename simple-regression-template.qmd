@@ -55,7 +55,7 @@ We want to study the relationship between percent of `illiteracy` using per-capi
 ## Scatter plot
 
 Make a scatter plot to visualize the relationship between `income` (x-axis) and 
-`illiteracy` (y-axis), displaying the `name` of each state.
+`illiteracy` (y-axis), displaying the `name` of each state (label).
 
 ```{r}
 # scatter plot
@@ -71,10 +71,10 @@ Obtain the correlation, `cor()`, between `income` and `illiteracy`
 
 ```{r}
 # correlation coefficient
-states |> summarize(correl = _______________)
+states |> summarize(___________________)
 ```
 
-True or False: based on the states data and the preceding scatter plot ...
+__True or False__: based on the states data and the preceding scatter plot ...
 
 a) Having a larger proportion of literate people in a state creates an increment of per-capita income. 
 
@@ -88,19 +88,21 @@ c) High levels of per-capita income produce more educated people.
 Use the `lm()` function to fit a linear model between `income` (x) and `illiteracy` (y)
 
 ```{r}
-mod1 = lm(____________________, data = ______)
+mod1 <- lm(____________________, data = ______)
 mod1
 ```
 
-Based on the output of your model mod1, provide a verbal interpretation of the obtained coefficients.
+Based on the output of your model `mod1`, provide a verbal interpretation of 
+the obtained coefficients.
 
 __Answer:__ 
+
 
 
 ## Scatter Plot with Regression Line
 
 Re-graph the scatter plot of `income` (x) and `illiteracy` (y), adding the line 
-of the linear model. 
+of the linear model---using the "slope" and "intercept" terms. 
 
 ```{r}
 # visualize regression line
@@ -123,43 +125,6 @@ ggplot(______, aes(x = ______, y = _______)) +
 ```
 
 
-## Predicted values and Residuals
-
-Inspect the following table which contains x, y, y-hat (predicted), and e-hat (residuals) data
-
-```{r}
-# x, y, fitted values y-hat, residuals e-hat
-reg_data = states |>
-  select(name, income, illiteracy) |>
-  mutate(
-    yhat = fitted(mod1),
-    ehat = residuals(mod1))
-
-# just a few rows
-slice(reg_data, 1:10)
-```
-
-\
-
-a) From `reg_data`, identify the 5 largest residuals. _Hint_: `arrange()` and
-`slice()` are your friends.
-
-```{r}
-# 5 largest residuals
-
-```
-
-\
-
-b) From `reg_data`, identify the 5 smallest residuals. _Hint_: `arrange()` and
-`slice()` are your friends.
-
-```{r}
-# 5 smallest residuals
-
-```
-
-
 -----
 
 
@@ -170,8 +135,8 @@ and an indicator variable derived from high-school graduates, specifically
 percent of HS graduates greater than or equal to 55 (`hs_plus55`).
 
 This analysis requires mutating the `states` data to add the categorical 
-variable `hs_plus55` that indicates whether a state had a highschool graduation 
-rate larger than or equal to 55 percent. This mutation requires a logical 
+variable `hs_plus55` that indicates whether a state had a highschool graduation
+larger than or equal to 55 percent. This mutation requires a logical 
 condition `hs_grad >= 55`
 
 ```{r}
@@ -187,14 +152,20 @@ states <- states |>
 ```
 
 ```{r}
-# correlation between "murder" and "life_exp"
-
-```
-
-```{r}
 # linear model predicting "life_exp" in terms of "murder" and "hs_plus55"
 
 ```
+
+Provide a verbal interpretation for the coefficients in the above model.
+
+Interpretation of `murder` coefficient:
+
+Interpretation of `hs_plus55` coefficient:
+
+
+
+__Challenge__: Obtain a scatter plot to visualize the parallel lines associated
+to the regression model fitted above.
 
 ```{r}
 # challenge: scatter plot with fitted lines
