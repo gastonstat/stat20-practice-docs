@@ -120,7 +120,7 @@ which utilizes the `geom_smooth()` function to superimpose the linear model.
 # visualize regression line
 ggplot(______, aes(x = ______, y = _______)) + 
   geom_point() +
-  geom_text(aes(label = ______), size = 3, alpha = 0.5)
+  geom_text(aes(label = ______), size = 3, alpha = 0.5) +
   geom_smooth(method = "lm", se = FALSE, formula = y ~ x)
 ```
 
