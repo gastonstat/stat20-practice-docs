@@ -108,7 +108,7 @@ of the linear model---using the "slope" and "intercept" terms.
 # visualize regression line
 ggplot(______, aes(x = ______, y = _______)) + 
   geom_point() +
-  geom_text(aes(label = ______), size = 3, alpha = 0.5)
+  geom_text(aes(label = ______), size = 3, alpha = 0.5) +
   geom_abline(slope = ______, intercept = ______)
 ```
 
